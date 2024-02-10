@@ -1,5 +1,6 @@
 prev_start_n = -1 // Предыдущее значение номера первой картинки из тех что нужно show
 prev_end_n = -1  // Предыдущее значение номера последней картинки из тех что нужно show
+var version = "0.81"
 
 function hide_images(colors_and_image_n, all_images_count, editions_to_hide) {
 
@@ -117,10 +118,9 @@ function hide_editions(products_blacklist){
     return editions_to_hide
 }
 
-function get_data(json_data){
+function get_data(json_data, version){
     data = json_data
 
-    version = "0.8"
     console.log("[SCRIPT VERSION] Hide_images version:" + version + "")
 
     var check_variant_number = true
@@ -294,7 +294,7 @@ function get_data(json_data){
         hide_images(colors_and_image_n, all_images_count, editions_to_hide)
     } else {
         console.log("[get_data] There is no need data. Launch : get_data()")
-        get_data()
+        get_data(json_data, version)
     }
 }
 
@@ -306,7 +306,7 @@ $.get( url, function( json_data ) {
     console.log("[get_data] json_data:")
     console.log(json_data)
     $(document).ready(function(){
-        get_data(json_data)
+        get_data(json_data, version)
         // ONLY FOR TEST ---
         $(".t-product__option-item").click(function() {
             console.log("Clicked")
