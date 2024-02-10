@@ -1,15 +1,12 @@
 prev_start_n = -1 // Предыдущее значение номера первой картинки из тех что нужно show
 prev_end_n = -1  // Предыдущее значение номера последней картинки из тех что нужно show
-var version = "0.81"
+var version = "0.82"
 
 function hide_images(colors_and_image_n, all_images_count, editions_to_hide) {
-
-
     // Find current color
     current_color_selected = $('.t-store__prod-popup__info').find('.t-product__option-item_active').find("span").text()
     // Текущее активное изображение
     current_image_n = $(".t-slds__thumbsbullet-wrapper.t-align_center").find(".t-slds__bullet_active").attr("data-slide-bullet-for")
-
 
     // Find what images should be shown for current color
     start_n = -1
@@ -39,7 +36,6 @@ function hide_images(colors_and_image_n, all_images_count, editions_to_hide) {
             }
         }
     });
-
 
     // Код будем выполнять только если изменились номера картинок которые необходимо отобразить \ скрыть
     if (prev_start_n != start_n || prev_end_n != end_n){
@@ -76,6 +72,7 @@ function hide_images(colors_and_image_n, all_images_count, editions_to_hide) {
 
 function hide_editions(products_blacklist){
     // Находим все блоки с товарами на странице
+    current_title = $('.t-store__prod-popup__info').find('.t-product__option-item_active')
     current_color_selected = $('.t-store__prod-popup__info').find('.t-product__option-item_active').find("span").text()
 
     // ЧАСТЬ 1. ДЛЯ КАРТОЧКИ ТОВАРА
@@ -100,7 +97,7 @@ function hide_editions(products_blacklist){
     // Если нужно скрыть, то скрываем
     if (!editions_to_hide == []){
         circles = $("div.js-product-controls-wrapper > div:nth-child(1) > form > label.t-product__option-item.t-product__option-item_buttons.t-product__option-item_color", "div.js-store-product.js-product.t-store__product-popup")
-
+        cricles = current_title.find("label.t-product__option-item_color")
         console.log("[hide_editions] circles:")
         console.log(circles)
 
