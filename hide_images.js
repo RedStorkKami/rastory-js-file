@@ -1,6 +1,6 @@
 prev_start_n = -1 // Предыдущее значение номера первой картинки из тех что нужно show
 prev_end_n = -1  // Предыдущее значение номера последней картинки из тех что нужно show
-var version = "0.82"
+var version = "0.83"
 
 function hide_images(colors_and_image_n, all_images_count, editions_to_hide) {
     // Find current color
@@ -97,7 +97,7 @@ function hide_editions(products_blacklist){
     // Если нужно скрыть, то скрываем
     if (!editions_to_hide == []){
         circles = $("div.js-product-controls-wrapper > div:nth-child(1) > form > label.t-product__option-item.t-product__option-item_buttons.t-product__option-item_color", "div.js-store-product.js-product.t-store__product-popup")
-        cricles = current_title.find("label.t-product__option-item_color")
+        cricles = $("label[class='t-product__option-item t-product__option-item_buttons t-product__option-item_color']")
         console.log("[hide_editions] circles:")
         console.log(circles)
 
